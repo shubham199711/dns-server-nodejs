@@ -24,10 +24,7 @@ server.on('request', function (request, response) {
 	if (customEntries[domain]) {
 		//if custom entry exists, push it back...
 		let entries = customEntries[domain];
-		for (let i = 0; i < entries.length; i++) {
-			let entry = entries[i];
-			response.answer.push(dns.A(entry));
-		}
+		(entries || []).forEach((entry) => response.answer.push(dns.A(entry)));
 		response.send();
 	} else {
 		let question = dns.Question({
