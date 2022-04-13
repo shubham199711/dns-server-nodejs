@@ -55,6 +55,10 @@ try {
     server.on('error', function (err, buff, req, res) {
         console.log(err.stack);
     });
+
+    server.on('listening', function (err, buff, req, res) {
+        console.log(err);
+    });
     
     console.log('Listening on ' + 53);
     server.serve(53);
